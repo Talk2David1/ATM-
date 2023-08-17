@@ -1,0 +1,53 @@
+<script>
+    // Define initial balance
+let balance = 10000;
+
+// Prompt user for PIN
+let pin = parseInt(prompt("Welcome to KOK ATM. Please enter your 4-digit PIN:"));
+
+// Check if PIN is correct
+if (pin === 1234) {
+  // Prompt user for transaction type
+  let transactionType = parseInt(prompt("Please select a transaction type:\n1. Check balance\n2. Make a withdrawal\n3. Make a money transfer\n4. Exit"));
+
+  // Check which transaction type was selected
+  if (transactionType === 1) {
+    // Display balance
+    alert("Your balance is $" + balance.toFixed(2));
+  } else if (transactionType === 2) {
+    // Prompt user for withdrawal amount
+    let withdrawalAmount = parseFloat(prompt("Please enter the amount you would like to withdraw:"));
+
+    // Check if withdrawal amount is valid
+    if (withdrawalAmount > balance) {
+      alert("Insufficient funds.");
+    } else {
+      // Update balance and display new balance
+      balance -= withdrawalAmount;
+      alert("Please take Your Cash. Your new balance is $" + balance.toFixed(2));
+    }
+  } else if (transactionType === 3) {
+    // Prompt user for recipient's account number and transfer amount
+    let recipientAccountNumber = parseInt(prompt("Please enter the recipient's account number:"));
+    let transferAmount = parseFloat(prompt("Please enter the amount you would like to transfer:"));
+
+    // Check if transfer amount is valid
+    if (transferAmount > balance) {
+      alert("Insufficient funds.");
+    } else {
+      // Update balance and display new balance
+      balance -= transferAmount;
+      alert("Your new balance is $" + balance.toFixed(2));
+    }
+  } else if (transactionType === 4) {
+    // Exit
+    alert("Thank you for using the ATM.");
+  } else {
+    // Invalid transaction type
+    alert("Invalid transaction type.");
+  }
+} else {
+  // Incorrect PIN
+  alert("Incorrect PIN.");
+}
+</script>
