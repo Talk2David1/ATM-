@@ -1,30 +1,20 @@
 <script>
-  // Define initial balance
+    // Define initial balance
 let balance = 10000;
-let pinAttempts = 0;
 
-while (pinAttempts < 3) {
 // Prompt user for PIN
 let pin = parseInt(prompt("Welcome to KOK ATM. Please enter your 4-digit PIN:"));
 
 // Check if PIN is correct
 if (pin === 1234) {
   // Prompt user for transaction type
-  let transactionType = parseInt(prompt(`     Please select a transaction type: 
-  1. Check balance                   2. Make a withdrawal
-  3. Make a money transfer     4. Buy airtime 
-  5. Change PIN                       6. Exit`));
+  let transactionType = parseInt(prompt("Please select a transaction type:\n1. Check balance\n2. Make a withdrawal\n3. Make a money transfer\n4. Exit"));
 
   // Check which transaction type was selected
   if (transactionType === 1) {
     // Display balance
     alert("Your balance is $" + balance.toFixed(2));
   } else if (transactionType === 2) {
-    // Prompt user for account type
-    let accountType = parseInt(prompt(`     Please select an account type: 
-    1. Savings account
-    2. Current account`));
-
     // Prompt user for withdrawal amount
     let withdrawalAmount = parseFloat(prompt("Please enter the amount you would like to withdraw:"));
 
@@ -34,14 +24,7 @@ if (pin === 1234) {
     } else {
       // Update balance and display new balance
       balance -= withdrawalAmount;
-      let receiptOption = parseInt(prompt("Would you like to get a receipt for this transaction?\n1. Yes\n2. No"));
-      if (receiptOption === 1) {
-        alert("Please take your Cash & Receipt.\n Your new balance is $" + balance.toFixed(2));
-      } else if (receiptOption === 2) {
-        alert("Please take your Cash \n Your new account balance is $" + balance.toFixed(2));
-      } else {
-        alert("Invalid option. Your new balance is $" + balance.toFixed(2));
-      }
+      alert("Please take Your Cash. Your new balance is $" + balance.toFixed(2));
     }
   } else if (transactionType === 3) {
     // Prompt user for recipient's account number and transfer amount
@@ -57,30 +40,14 @@ if (pin === 1234) {
       alert("Your new balance is $" + balance.toFixed(2));
     }
   } else if (transactionType === 4) {
-    // Buy airtime
-    // Perform airtime purchase logic here
-    alert("Airtime purchase successful.");
-  } else if (transactionType === 5) {
-    // Change PIN
-    // Perform PIN change logic here
-    alert("PIN change successful.");
-  } else if (transactionType === 6) {
     // Exit
     alert("Thank you for using the ATM.");
-    break; // Exit the loop
   } else {
     // Invalid transaction type
     alert("Invalid transaction type.");
   }
 } else {
   // Incorrect PIN
-  pinAttempts++;
-  alert("Incorrect PIN. Please try again.");
-}
-}
-
-if (pinAttempts === 3) {
-// Account blocked after three incorrect PIN attempts
-alert("Account blocked. Please contact customer support.");
+  alert("Incorrect PIN.");
 }
 </script>
